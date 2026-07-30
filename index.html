@@ -27,6 +27,159 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/pricing.css">
   <link rel="stylesheet" href="css/widget.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://legal.myaiworker.online/#org",
+        "name": "MyAIworker Compliance",
+        "url": "https://legal.myaiworker.online/",
+        "logo": "https://legal.myaiworker.online/images/logo-512.png",
+        "email": "SupremeDude@sometechdude.com",
+        "description": "HIPAA-compliant AI receptionists for medical offices and compliance-ready AI intake for law offices.",
+        "parentOrganization": {
+          "@type": "Organization",
+          "name": "SomeTechDude.com",
+          "url": "https://sometechdude.com"
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://legal.myaiworker.online/#website",
+        "url": "https://legal.myaiworker.online/",
+        "name": "MyAIworker Compliance",
+        "publisher": { "@id": "https://legal.myaiworker.online/#org" }
+      },
+      {
+        "@type": "Service",
+        "name": "HIPAA-Compliant AI Receptionist for Medical Offices",
+        "serviceType": "AI receptionist and patient intake",
+        "provider": { "@id": "https://legal.myaiworker.online/#org" },
+        "description": "A 24/7 AI receptionist for medical practices, covered by a signed Business Associate Agreement, with encrypted transcripts and restricted, logged access.",
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "Medical solo practice",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": "1100",
+              "priceCurrency": "USD",
+              "unitText": "MONTH"
+            }
+          },
+          {
+            "@type": "Offer",
+            "name": "Medical busier office",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": "1600",
+              "priceCurrency": "USD",
+              "unitText": "MONTH"
+            }
+          },
+          {
+            "@type": "Offer",
+            "name": "Medical one-time setup",
+            "price": "3000",
+            "priceCurrency": "USD"
+          }
+        ]
+      },
+      {
+        "@type": "Service",
+        "name": "Compliance-Ready AI Receptionist for Law Offices",
+        "serviceType": "AI receptionist and legal client intake",
+        "provider": { "@id": "https://legal.myaiworker.online/#org" },
+        "description": "A 24/7 AI receptionist for law firms that screens for conflicts, never gives legal advice, discloses that no attorney-client relationship exists yet, and keeps confidential intake records ready for audit.",
+        "offers": [
+          {
+            "@type": "Offer",
+            "name": "Solo attorney",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": "3000",
+              "priceCurrency": "USD",
+              "unitText": "MONTH"
+            }
+          },
+          {
+            "@type": "Offer",
+            "name": "Multi-attorney office",
+            "priceSpecification": {
+              "@type": "UnitPriceSpecification",
+              "price": "3500",
+              "priceCurrency": "USD",
+              "unitText": "MONTH"
+            }
+          },
+          {
+            "@type": "Offer",
+            "name": "Legal one-time setup",
+            "price": "5000",
+            "priceCurrency": "USD"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://legal.myaiworker.online/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Will you sign a BAA?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes — for every medical plan, before go-live. That's part of what the $600/mo HIPAA compliance rider pays for. If a vendor won't sign one, they shouldn't be near your phones."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does the AI give legal advice?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. It takes down the caller's information, screens for conflicts, tells them plainly that no attorney-client relationship exists until your firm accepts the matter, and hands them to you. If a caller pushes for an opinion on their case, it says that's a question for the attorney and gets them to you instead."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Why is the legal rider more expensive than the medical one?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Legal intake carries heavier per-matter compliance obligations — conflict screening, privilege handling, and record retention — and the tooling behind it costs more to run. We show you the base and the rider separately so you can see exactly where the difference sits."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is there any way to reduce the setup fee?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Setup is priced at cost on both plans and is never discounted, promoted, or negotiated. That's a deliberate policy, not a negotiating posture."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Am I locked into a contract?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Both plans are month-to-month — cancel anytime. Your first monthly payment isn't due until 30 days after your AI goes live."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Who do I reach if something breaks?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A real person in the US. Support is human, not a ticket queue, and additional hands-on remote work is billed at $95/hr if you ever want it."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
