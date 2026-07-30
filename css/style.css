@@ -502,6 +502,10 @@ body::before {
   line-height: 1.6;
 }
 
+.step-body p + p {
+  margin-top: 0.75rem;
+}
+
 /* ── FEATURE LIST ─────────────────────────────────────────── */
 .feature-list {
   display: grid;
