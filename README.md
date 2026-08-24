@@ -8,12 +8,7 @@ Compliance-focused sister site to [myaiworker.online](https://myaiworker.online)
 This site offers exactly two plans and nothing else. It must never display, link to, or
 reference MyAIworker's general small-business tiers.
 
-| Plan | Base | Compliance rider | Monthly total | Setup |
-|---|---|---|---|---|
-| Medical — solo practice | $500 | $600 HIPAA | **$1,100** | $3,000 |
-| Medical — busier office | $1,000 | $600 HIPAA | **$1,600** | $3,000 |
-| Law office — solo attorney | $500 | $2,500 legal | **$3,000** | $5,000 |
-| Law office — multi-attorney | $1,000 | $2,500 legal | **$3,500** | $5,000 |
+
 
 Pricing is displayed **itemized** (base and rider shown separately) by design.
 
