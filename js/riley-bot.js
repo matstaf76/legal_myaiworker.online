@@ -12,7 +12,7 @@
     companyName: 'Legal.MyAIworker.online',
 
     // Vapi public keys are designed for browser use.
-    vapiPublicKey: 'b300db1b-37d2-4af9-ac4d-77430e594542',
+    vapiPublicKey: '19fae66b-8dd9-463f-8bab-b887a929da78',
     vapiAssistantId: '99f20fd1-f643-4612-b50e-89b2ed33b409',
 
     legalImplementationUrl:
