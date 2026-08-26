@@ -64,7 +64,7 @@ Voice rules:
   responses.
 - Never read a raw URL aloud.
 - When saying Legal.MyAIworker.online aloud, pronounce it naturally as
-  "Legal My AI Worker dot online."
+  "Legal dot My AI Worker dot online."
 - Never spell the website address letter by letter.
 - Say prices naturally: "twenty-five hundred for implementation,"
   "fifteen hundred a month for the first user," and
@@ -165,49 +165,71 @@ new inquiries, smoother intake and scheduling, or more consistent follow-up?"
     return null;
   }
 
-  function describeVapiError(error) {
-    if (!error) return 'Unknown Vapi error';
+  function stringifyErrorDetail(value) {
+    if (value === undefined || value === null || value === '') return '';
 
-    const nested = error.error;
+    if (typeof value === 'string') {
+      return value === '[object Object]' ? '' : value;
+    }
 
-    const directDetail =
-      (nested &&
-        (nested.message ||
-          nested.msg ||
-          nested.code ||
-          nested.type ||
-          nested.statusCode)) ||
-      error.message ||
-      error.msg ||
-      error.code ||
-      error.type ||
-      error.statusCode;
-
-    if (directDetail) {
-      return String(directDetail);
+    if (typeof value === 'number' || typeof value === 'boolean') {
+      return String(value);
     }
 
     try {
-      const serialized = JSON.stringify(error, function (key, value) {
-        if (value instanceof Error) {
+      const seen = [];
+      const serialized = JSON.stringify(value, function (key, current) {
+        if (current instanceof Error) {
           return {
-            name: value.name,
-            message: value.message,
-            stack: value.stack,
+            name: current.name,
+            message: current.message,
           };
         }
 
-        return value;
+        if (current && typeof current === 'object') {
+          if (seen.indexOf(current) !== -1) return '[Circular]';
+          seen.push(current);
+        }
+
+        return current;
       });
 
-      if (serialized && serialized !== '{}') {
+      if (serialized && serialized !== '{}' && serialized !== '[]') {
         return serialized;
       }
     } catch (_) {
-      // Fall through to String(error).
+      // Fall through to a guarded string conversion.
     }
 
-    return String(error);
+    const fallback = String(value);
+    return fallback === '[object Object]' ? '' : fallback;
+  }
+
+  function describeVapiError(error) {
+    if (!error) return 'Unknown Vapi error';
+
+    const nested = error && typeof error === 'object' ? error.error : null;
+    const candidates = [
+      nested && nested.message,
+      nested && nested.msg,
+      nested && nested.code,
+      nested && nested.type,
+      nested && nested.statusCode,
+      error.message,
+      error.msg,
+      error.code,
+      error.type,
+      error.statusCode,
+      nested,
+      error,
+    ];
+
+    for (let index = 0; index < candidates.length; index += 1) {
+      const detail = stringifyErrorDetail(candidates[index]);
+      if (detail) return detail;
+    }
+
+    return 'Unknown Vapi error';
   }
 
   async function createVapiClient() {
