@@ -25,9 +25,9 @@
   <link rel="icon" href="favicon.ico" sizes="48x48">
   <link rel="icon" type="image/png" sizes="192x192" href="images/icon-192.png">
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-  <link rel="stylesheet" href="css/style.css?v=20260826-2">
-  <link rel="stylesheet" href="css/pricing.css?v=20260826-2">
-  <link rel="stylesheet" href="css/widget.css?v=20260826-2">
+  <link rel="stylesheet" href="css/style.css?v=20260901-2">
+  <link rel="stylesheet" href="css/pricing.css?v=20260901-1">
+  <link rel="stylesheet" href="css/widget.css?v=20260901-1">
 
   <script type="application/ld+json">
   {
@@ -110,7 +110,7 @@
             "name": "Who do I reach if something breaks?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "A real person in the US. Support is human, not a ticket queue, and additional hands-on remote work is billed at $95/hr if you ever want it."
+              "text": "A real person in the US. Support is human, not a ticket queue."
             }
           }
         ]
@@ -128,10 +128,11 @@
       <ul class="nav-links" role="list">
         <li><a href="#the-gap">The Compliance Gap</a></li>
         <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#time-calculator">Calculators</a></li>
         <li><a href="#pricing">Plans</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
-      <a href="#pricing" class="btn btn--primary nav-cta">See Plans</a>
+      <a href="#pricing" class="btn btn--primary nav-cta">See Legal AI Pricing</a>
     </div>
   </nav>
 
@@ -158,9 +159,7 @@
       </p>
 
       <div class="hero-actions fade-up fade-up-3">
-        <button class="btn btn--primary btn--lg hero-talk-btn" onclick="window.aiwStartVoice &amp;&amp; window.aiwStartVoice()">
-          Let&rsquo;s Talk to Riley
-        </button>
+        <a href="#pricing" class="btn btn--primary btn--lg">See Legal AI Pricing</a>
         <a href="#pricing" class="btn btn--outline btn--lg">See Plans &amp; Pricing</a>
       </div>
 
@@ -185,8 +184,8 @@
           <span class="label">Lawyer in the Loop</span>
         </div>
         <div class="hero-stat">
-          <span class="num">$0</span>
-          <span class="label">Missed Intakes</span>
+          <span class="num">$2,500</span>
+          <span class="label">Special Implementation</span>
         </div>
         <div class="hero-stat">
           <span class="num">3 Days</span>
@@ -194,6 +193,13 @@
         </div>
       </div>
 
+    </div>
+  </section>
+
+  <section class="legal-ai-notice" aria-label="Important legal notice">
+    <div class="container legal-ai-notice-inner">
+      <strong>Important Legal Notice</strong>
+      <p>Riley is an AI demonstration. Riley is not an attorney, does not provide legal advice, and interacting with Riley does not create an attorney-client relationship. Do not share confidential, privileged, or sensitive information in the public demo.</p>
     </div>
   </section>
 
@@ -249,7 +255,6 @@
       <div class="trust-bar">
         <div class="trust-item"><span class="icon" aria-hidden="true">🔒</span> Secure Stripe Payments</div>
         <div class="trust-item"><span class="icon" aria-hidden="true">🇺🇸</span> US-Based Setup &amp; Support</div>
-        <div class="trust-item"><span class="icon" aria-hidden="true">🔧</span> $95/hr Remote Support Available</div>
         <div class="trust-item"><span class="icon" aria-hidden="true">📞</span> Real Human Behind It</div>
       </div>
     </div>
@@ -284,6 +289,147 @@
             <p>Your AI answers within 3 business days of setup, or your setup fee comes back. First monthly payment isn't due until 30 days after go-live.</p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FREE TIME-RECOVERY CALCULATOR ─────────────────────── -->
+  <section class="section time-calculator-section" id="time-calculator" aria-labelledby="time-calculator-title">
+    <div class="container">
+      <span class="section-label">Free · Anonymous · About One Minute</span>
+      <h2 class="section-title" id="time-calculator-title">Where Does Your Week Go?</h2>
+      <p class="section-sub">Enter the hours your firm spends on each task every week. See where the right AI workflow may help return time to your team.</p>
+
+      <div class="time-calculator-shell">
+        <form class="time-calculator-form" id="timeCalculator" novalidate>
+          <div class="time-table-heading">
+            <div>
+              <h3>Weekly repetitive work</h3>
+              <p>Use total firm hours per week—not hours per employee.</p>
+            </div>
+            <span class="time-table-key">Live estimate</span>
+          </div>
+
+          <div class="time-table-wrap">
+            <table class="time-task-table">
+              <caption>Weekly task time and estimated recoverable hours</caption>
+              <thead>
+                <tr><th scope="col">Task</th><th scope="col">Your time</th><th scope="col">AI may assist with</th><th scope="col">Potential return</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row"><label for="timeCalls">Routine calls and questions</label></th>
+                  <td data-label="Your time"><span class="time-table-input"><input id="timeCalls" data-time-task="calls" type="number" min="0" max="168" step="0.5" value="0" inputmode="decimal" aria-label="Hours per week spent on routine calls and questions"><small>hrs/week</small></span></td>
+                  <td data-label="AI may assist with"><span class="assist-rate">65% estimate</span></td>
+                  <td data-label="Potential return"><strong data-time-return="calls">0 hrs/week</strong></td>
+                </tr>
+                <tr>
+                  <th scope="row"><label for="timeScheduling">Scheduling and rescheduling</label></th>
+                  <td data-label="Your time"><span class="time-table-input"><input id="timeScheduling" data-time-task="scheduling" type="number" min="0" max="168" step="0.5" value="0" inputmode="decimal" aria-label="Hours per week spent scheduling and rescheduling"><small>hrs/week</small></span></td>
+                  <td data-label="AI may assist with"><span class="assist-rate">75% estimate</span></td>
+                  <td data-label="Potential return"><strong data-time-return="scheduling">0 hrs/week</strong></td>
+                </tr>
+                <tr>
+                  <th scope="row"><label for="timeFollowup">Lead and customer follow-up</label></th>
+                  <td data-label="Your time"><span class="time-table-input"><input id="timeFollowup" data-time-task="followup" type="number" min="0" max="168" step="0.5" value="0" inputmode="decimal" aria-label="Hours per week spent following up with leads and customers"><small>hrs/week</small></span></td>
+                  <td data-label="AI may assist with"><span class="assist-rate">70% estimate</span></td>
+                  <td data-label="Potential return"><strong data-time-return="followup">0 hrs/week</strong></td>
+                </tr>
+                <tr>
+                  <th scope="row"><label for="timeEmail">Routine email</label></th>
+                  <td data-label="Your time"><span class="time-table-input"><input id="timeEmail" data-time-task="email" type="number" min="0" max="168" step="0.5" value="0" inputmode="decimal" aria-label="Hours per week spent reading, sorting, and drafting routine email"><small>hrs/week</small></span></td>
+                  <td data-label="AI may assist with"><span class="assist-rate">55% estimate</span></td>
+                  <td data-label="Potential return"><strong data-time-return="email">0 hrs/week</strong></td>
+                </tr>
+                <tr>
+                  <th scope="row"><label for="timeData">Calendar, spreadsheet, and CRM entry</label></th>
+                  <td data-label="Your time"><span class="time-table-input"><input id="timeData" data-time-task="data" type="number" min="0" max="168" step="0.5" value="0" inputmode="decimal" aria-label="Hours per week spent on calendar, spreadsheet, and CRM data entry"><small>hrs/week</small></span></td>
+                  <td data-label="AI may assist with"><span class="assist-rate">60% estimate</span></td>
+                  <td data-label="Potential return"><strong data-time-return="data">0 hrs/week</strong></td>
+                </tr>
+                <tr>
+                  <th scope="row"><label for="timeReminders">Reminders, reviews, and routine updates</label></th>
+                  <td data-label="Your time"><span class="time-table-input"><input id="timeReminders" data-time-task="reminders" type="number" min="0" max="168" step="0.5" value="0" inputmode="decimal" aria-label="Hours per week spent on reminders, review requests, and routine updates"><small>hrs/week</small></span></td>
+                  <td data-label="AI may assist with"><span class="assist-rate">80% estimate</span></td>
+                  <td data-label="Potential return"><strong data-time-return="reminders">0 hrs/week</strong></td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr><th scope="row">Weekly total</th><td data-label="Your time"><strong id="totalEnteredWeekly">0 hrs/week</strong></td><td data-label="Method"><span>Conservative estimates</span></td><td data-label="Potential return"><strong id="totalRecoverableWeekly">0 hrs/week</strong></td></tr>
+              </tfoot>
+            </table>
+          </div>
+
+          <div class="time-calculator-controls">
+            <label class="hourly-value" for="timeHourlyValue"><span><strong>Optional:</strong> What is one hour of this time worth?</span><span class="currency-input"><span aria-hidden="true">$</span><input id="timeHourlyValue" type="number" min="0" max="10000" step="1" inputmode="decimal" placeholder="30"><small>per hour</small></span></label>
+            <button class="btn btn--primary btn--lg" type="submit">Show My Full Results</button>
+          </div>
+          <p class="privacy-note"><strong>Private by design:</strong> These calculator inputs remain in your browser and are not submitted to us.</p>
+        </form>
+
+        <aside class="time-results" id="timeResults" aria-live="polite" aria-atomic="true" tabindex="-1">
+          <span class="result-label">The right AI workflow could return approximately</span>
+          <strong class="time-result-primary" id="recoverableWeekly">0 hours every week</strong>
+          <p class="time-result-summary" id="recoverableSummary">Enter your weekly task time to reveal where AI may help most.</p>
+          <div class="time-metrics">
+            <div><span>Working days/week</span><strong id="recoverableDays">0</strong></div>
+            <div><span>Hours/month</span><strong id="recoverableMonthly">0</strong></div>
+            <div><span>Hours/year</span><strong id="recoverableAnnual">0</strong></div>
+            <div><span>Annual capacity value</span><strong id="recoverableValue">Add hourly value</strong></div>
+          </div>
+          <div class="time-recommendations"><h3>Where AI could help most</h3><ol id="timeRecommendations"><li>Enter time above to generate your three strongest opportunities.</li></ol></div>
+          <p class="estimate-note">This planning estimate uses conservative assistance rates. It represents time AI may assist with—not guaranteed savings, revenue, or eliminated positions.</p>
+          <div class="time-result-actions">
+            <a class="btn btn--primary" href="#how-it-works">See How the Legal System Works</a>
+            <a class="btn btn--outline" href="#plan-calculator">Estimate AI Workload</a>
+            <button class="btn btn--outline" type="button" onclick="window.aiwToggle &amp;&amp; window.aiwToggle()">Talk to Riley</button>
+          </div>
+          <p class="conversation-note">Talking to Riley starts a separate conversation. Your calculator answers are not shared with Riley automatically.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PLAN AND OPPORTUNITY CALCULATORS ──────────────────── -->
+  <section class="section" id="plan-calculator" aria-labelledby="calculator-title">
+    <div class="container">
+      <span class="section-label">Find Your Workload Fit</span>
+      <h2 class="section-title" id="calculator-title">Plan &amp; Workload Calculator</h2>
+      <p class="section-sub">Estimate monthly AI workload from call volume and office complexity. This is a general MyAIworker planning estimate; Legal implementation and recurring pricing remain exactly as listed below and are confirmed before purchase.</p>
+
+      <form class="plan-calculator" id="planCalculator">
+        <div class="calculator-fields">
+          <label>Average calls per day<input type="number" id="callsPerDay" min="0" max="1000" step="1" value="10" inputmode="numeric"></label>
+          <label>Typical call duration
+            <select id="callType">
+              <option value="2.5">Quick — about 2–3 minutes</option>
+              <option value="4.5" selected>Standard — about 4–5 minutes</option>
+              <option value="7">Detailed — about 6–8 minutes</option>
+            </select>
+          </label>
+          <label>Office-system operators
+            <select id="operatorCount">
+              <option value="1" selected>1 operator</option>
+              <option value="3">2–3 operators</option>
+              <option value="4">4+ operators</option>
+            </select>
+          </label>
+        </div>
+        <div class="calculator-result" aria-live="polite">
+          <span class="result-label">Estimated monthly AI workload</span>
+          <strong id="estimatedMinutes">1,368 minutes</strong>
+          <span class="result-label">Recommended general workload plan</span>
+          <strong class="result-plan" id="recommendedPlan">Business — $500/month</strong>
+          <p id="recommendationReason">Sized mainly for your estimated call workload, with office-system operators considered second.</p>
+          <a href="#pricing" class="btn btn--primary">View Legal Pricing</a>
+        </div>
+      </form>
+
+      <div class="roi-box">
+        <div><h3>Missed-Call Opportunity Estimate</h3><p>Estimate the potential value represented by calls your firm currently misses. This is an opportunity estimate, not a revenue promise.</p></div>
+        <label>Missed calls per month<input type="number" id="missedCalls" min="0" step="1" value="0" inputmode="numeric"></label>
+        <label>Average matter/client value<input type="number" id="customerValue" min="0" step="25" value="0" inputmode="decimal"></label>
+        <div class="roi-result"><span>Potential opportunity represented</span><strong id="opportunityValue">$0/month</strong></div>
       </div>
     </div>
   </section>
@@ -332,7 +478,7 @@
             <li class="card-feature"><span class="check" aria-hidden="true">✓</span><span><strong>Screens for conflicts</strong> before it takes matter details</span></li>
             <li class="card-feature"><span class="check" aria-hidden="true">✓</span><span><strong>Never gives legal advice</strong> — on the phone or in chat</span></li>
             <li class="card-feature"><span class="check" aria-hidden="true">✓</span><span>Tells every caller no attorney-client relationship exists yet</span></li>
-            <li class="card-feature"><span class="check" aria-hidden="true">✓</span><span>Confidential intake records, ready for audit</span></li>
+            <li class="card-feature"><span class="check" aria-hidden="true">✓</span><span>Confidential intake records, organized for attorney review</span></li>
             <li class="card-feature"><span class="check" aria-hidden="true">✓</span><span><strong>24/7 AI voice reception + website chat + email chatbot</strong></span></li>
             <li class="card-feature"><span class="check" aria-hidden="true">✓</span><span>Email intake, administrative responses, consultation guidance, and human escalation</span></li>
             <li class="card-feature"><span class="check" aria-hidden="true">✓</span><span>Consultation booking + attorney calendars</span></li>
@@ -397,7 +543,7 @@
         <div class="step-card">
           <div class="step-body">
             <h3>Who do I reach if something breaks?</h3>
-            <p>A real person in the US. Support is human, not a ticket queue, and additional hands-on remote work is billed at $95/hr if you ever want it.</p>
+            <p>A real person in the US. Support is human, not a ticket queue.</p>
           </div>
         </div>
       </div>
@@ -435,9 +581,13 @@
       <nav class="footer-links" aria-label="Footer navigation">
         <a href="#the-gap">The Compliance Gap</a>
         <a href="#how-it-works">How It Works</a>
+        <a href="#time-calculator">Calculators</a>
         <a href="#pricing">Plans</a>
         <a href="#faq">FAQ</a>
-        <a href="mailto:SupremeDude@sometechdude.com">Contact</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="support.html">Customer Support</a>
+        <a href="mailto:Matt@SomeTechDude.com">Contact</a>
         <a href="https://sometechdude.com" target="_blank" rel="noopener">SomeTechDude.com</a>
       </nav>
       <p class="footer-copy">
@@ -446,6 +596,15 @@
       </p>
     </div>
   </footer>
+
+  <div id="aiw-intro" role="button" tabindex="0" aria-label="Meet Riley. Tap to start the voice demonstration.">
+    <div class="aiw-intro-inner">
+      <div class="aiw-intro-orb" aria-hidden="true">⚖</div>
+      <div class="aiw-intro-title">Meet Riley</div>
+      <p class="aiw-intro-sub"><strong>Riley talks back out loud.</strong><br>Tap anywhere to start the voice demonstration and allow microphone access when asked.</p>
+      <p class="aiw-intro-disclaimer">Riley is AI, not an attorney, and does not provide legal advice. No attorney-client relationship is created.</p>
+    </div>
+  </div>
 
   <!-- ── AI WIDGET (Riley) ─────────────────────────────────── -->
   <div id="aiw-launcher" aria-label="AI chat assistant">
@@ -515,8 +674,69 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    (function () {
+      const callsInput = document.getElementById('callsPerDay');
+      const callType = document.getElementById('callType');
+      const operators = document.getElementById('operatorCount');
+      const missedCalls = document.getElementById('missedCalls');
+      const customerValue = document.getElementById('customerValue');
+      const minutesOutput = document.getElementById('estimatedMinutes');
+      const planOutput = document.getElementById('recommendedPlan');
+      const reasonOutput = document.getElementById('recommendationReason');
+      const opportunityOutput = document.getElementById('opportunityValue');
+
+      document.getElementById('planCalculator').addEventListener('submit', function (event) { event.preventDefault(); });
+
+      function positiveNumber(input) {
+        const value = Number(input.value);
+        return Number.isFinite(value) ? Math.max(0, value) : 0;
+      }
+
+      function updatePlan() {
+        const calls = positiveNumber(callsInput);
+        const duration = positiveNumber(callType);
+        const operatorCount = positiveNumber(operators);
+        const monthlyMinutes = Math.round(calls * duration * 30.4);
+        let plan = 'Small Business — $300/month';
+        let thresholdReason = 'lighter estimated call workload';
+
+        if (monthlyMinutes > 900 || operatorCount >= 3) {
+          plan = 'Business — $500/month';
+          thresholdReason = 'growing estimated call workload or added office complexity';
+        }
+        if (monthlyMinutes > 2400 || operatorCount >= 4) {
+          plan = 'Busy Business — $1,000/month';
+          thresholdReason = 'heavy estimated call workload or multiple office-system operators';
+        }
+        if (monthlyMinutes > 5000) {
+          plan = 'High-Volume Business — $1,500/month';
+          thresholdReason = 'high estimated AI workload';
+        }
+        if (monthlyMinutes > 8500) {
+          plan = 'Enterprise — custom pricing';
+          thresholdReason = 'workload beyond the standard plan range';
+        }
+
+        minutesOutput.textContent = monthlyMinutes.toLocaleString() + ' minutes';
+        planOutput.textContent = plan;
+        reasonOutput.textContent = 'Recommended for ' + thresholdReason + '. Employee headcount does not determine the plan.';
+      }
+
+      function updateOpportunity() {
+        const missed = positiveNumber(missedCalls);
+        const value = positiveNumber(customerValue);
+        opportunityOutput.textContent = (missed * value).toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }) + '/month';
+      }
+
+      [callsInput, callType, operators].forEach(function (field) { field.addEventListener('input', updatePlan); });
+      [missedCalls, customerValue].forEach(function (field) { field.addEventListener('input', updateOpportunity); });
+      updatePlan();
+      updateOpportunity();
+    }());
   </script>
-  <script src="js/riley-bot.js?v=20260826-1"></script>
+  <script src="js/time-calculator.js?v=20260901-1"></script>
+  <script src="js/riley-bot.js?v=20260901-2"></script>
 
 </body>
 </html>
