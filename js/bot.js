@@ -134,7 +134,7 @@ new inquiries, smoother intake and scheduling, or more consistent follow-up?"
   function loadVapiModule() {
     if (!vapiModulePromise) {
       vapiModulePromise = import(
-        'https://cdn.jsdelivr.net/npm/@vapi-ai/web@2.5.2/+esm'
+        'https://cdn.jsdelivr.net/npm/@vapi-ai/web@2.6.1/+esm'
       ).catch(function (error) {
         vapiModulePromise = null;
         throw error;

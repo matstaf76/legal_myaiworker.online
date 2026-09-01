@@ -97,6 +97,8 @@ new inquiries, smoother intake and scheduling, or more consistent follow-up?"
   let vapiLoading = false;
   let vapiModulePromise = null;
   let checkoutOffered = false;
+  let introStarted = false;
+  let voiceFailureReported = false;
 
   const $ = (id) => document.getElementById(id);
 
@@ -134,7 +136,7 @@ new inquiries, smoother intake and scheduling, or more consistent follow-up?"
   function loadVapiModule() {
     if (!vapiModulePromise) {
       vapiModulePromise = import(
-        'https://cdn.jsdelivr.net/npm/@vapi-ai/web@2.5.2/+esm'
+        'https://cdn.jsdelivr.net/npm/@vapi-ai/web@2.6.1/+esm'
       ).catch(function (error) {
         vapiModulePromise = null;
         throw error;
@@ -269,6 +271,7 @@ new inquiries, smoother intake and scheduling, or more consistent follow-up?"
       return;
     }
 
+    voiceFailureReported = false;
     vapiLoading = true;
     openWindow();
     showMicBanner();
@@ -304,6 +307,7 @@ new inquiries, smoother intake and scheduling, or more consistent follow-up?"
   function handleVapiCallStart() {
     vapiActive = true;
     vapiLoading = false;
+    voiceFailureReported = false;
     setVoiceUI(true, '🎙️ Live — just talk');
   }
 
@@ -319,27 +323,37 @@ new inquiries, smoother intake and scheduling, or more consistent follow-up?"
   }
 
   function handleVapiError(error) {
-    const detail = describeVapiError(error);
-
-    console.error('Riley Vapi error: ' + detail, error);
-
-    vapiActive = false;
-    vapiLoading = false;
-    setVoiceUI(false);
-
-    addBotMessage(
-      '⚠️ Riley could not start the voice session. Error: ' + detail
-    );
+    reportVoiceFailure('Riley Vapi error', error);
   }
 
   function handleVapiStartFailure(error) {
+    reportVoiceFailure('Riley Vapi start failed', error);
+  }
+
+  function reportVoiceFailure(logLabel, error) {
     const detail = describeVapiError(error);
 
-    console.error('Riley Vapi start failed: ' + detail, error);
+    console.error(logLabel + ': ' + detail, error);
 
     vapiActive = false;
     vapiLoading = false;
     setVoiceUI(false);
+
+    if (voiceFailureReported) return;
+    voiceFailureReported = true;
+
+    const embeddedApp = webviewName();
+    if (embeddedApp) {
+      showOpenInBrowserNotice(embeddedApp);
+      return;
+    }
+
+    if (/notallowed|permission|denied|microphone|audio capture/i.test(detail)) {
+      addBotMessage(
+        '⚠️ Microphone access was not granted. Allow microphone access in your browser site settings, then tap the microphone to try again.'
+      );
+      return;
+    }
 
     addBotMessage(
       '⚠️ Riley could not start the voice session. Error: ' + detail
@@ -390,6 +404,26 @@ new inquiries, smoother intake and scheduling, or more consistent follow-up?"
     openWindow();
     startVapiCall();
   };
+
+  function startFromIntro() {
+    if (introStarted) return;
+    introStarted = true;
+
+    const intro = $('aiw-intro');
+    if (intro) {
+      intro.classList.add('aiw-intro-out');
+      intro.setAttribute('aria-hidden', 'true');
+      intro.setAttribute('tabindex', '-1');
+    }
+
+    window.aiwStartVoice();
+
+    if (intro) {
+      setTimeout(function () {
+        intro.remove();
+      }, 450);
+    }
+  }
 
   window.aiwDismissVoice = function () {
     stopVapiCall();
@@ -477,11 +511,22 @@ new inquiries, smoother intake and scheduling, or more consistent follow-up?"
     const send = $('aiw-send');
     const input = $('aiw-input');
     const voice = $('aiw-voice-btn');
+    const intro = $('aiw-intro');
 
     if (fab) fab.addEventListener('click', toggleWindow);
     if (teaser) teaser.addEventListener('click', toggleWindow);
     if (send) send.addEventListener('click', sendMessage);
     if (voice) voice.addEventListener('click', toggleVoice);
+
+    if (intro) {
+      intro.addEventListener('click', startFromIntro);
+      intro.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          startFromIntro();
+        }
+      });
+    }
 
     if (input) {
       input.addEventListener('keydown', function (event) {

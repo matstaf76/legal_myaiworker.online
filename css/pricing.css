@@ -46,6 +46,7 @@
 
 /* ── PRICING CARD ─────────────────────────────────────────── */
 .pricing-card {
+  min-width: 0;
   background: var(--clr-surface);
   border: 1px solid var(--clr-border);
   border-radius: var(--radius-lg);
@@ -178,6 +179,11 @@
   font-size: 0.82rem;
   color: var(--clr-text-muted);
   font-style: italic;
+}
+
+.monthly-price-highlight {
+  color: var(--clr-amber);
+  font-weight: 900;
 }
 
 .price-savings {
