@@ -1,27 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://legal.myaiworker.online/</loc>
-    <lastmod>2026-09-01</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://sometechdude.com/</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
-  <url>
-    <loc>https://legal.myaiworker.online/privacy.html</loc>
-    <lastmod>2026-09-01</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
+<url>
+    <loc>https://sometechdude.com/experience.html</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://legal.myaiworker.online/terms.html</loc>
-    <lastmod>2026-09-01</lastmod>
+    <loc>https://sometechdude.com/contact.html</loc>
+    <lastmod>2026-08-25</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.7</priority>
   </url>
-  <url>
-    <loc>https://legal.myaiworker.online/support.html</loc>
-    <lastmod>2026-09-01</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-  </url>
+  <url><loc>https://sometechdude.com/privacy.html</loc></url>
+  <url><loc>https://sometechdude.com/terms.html</loc></url>
+  <url><loc>https://sometechdude.com/support.html</loc></url>
 </urlset>
