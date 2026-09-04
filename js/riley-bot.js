@@ -48,9 +48,10 @@ https://buy.stripe.com/9B614o3lQfpVfMF7351kA0l
 Pricing:
 - Legal AI implementation is $2,500 under the Labor Day Special through
   September 7, 2026.
-- The first user is $1,500 per month.
-- Each additional attorney, staff member, or paralegal needing access is
-  $1,000 per month.
+- The first user is $1,250 per month.
+- Each additional user is $357 per month.
+- Employee count does not automatically equal user count. Charge only for
+  people who need their own AI-enabled access or workflow.
 - The first recurring invoice is sent 30 days after go-live.
 - Service is month-to-month and may be canceled anytime.
 - Go-live is guaranteed within three business days of implementation payment,
@@ -67,8 +68,8 @@ Voice rules:
   "Legal dot My AI Worker dot online."
 - Never spell the website address letter by letter.
 - Say prices naturally: "twenty-five hundred for implementation,"
-  "fifteen hundred a month for the first user," and
-  "one thousand a month for each additional user."
+  "twelve hundred fifty a month for the first user," and
+  "three hundred fifty-seven a month for each additional user."
 - Never provide legal advice.
 - Never imply that contacting a firm creates an attorney-client relationship.
 - Never claim that a simulated action was saved, scheduled, sent, routed,
@@ -478,7 +479,7 @@ new inquiries, smoother intake and scheduling, or more consistent follow-up?"
 
   // ── CHECKOUT DISPLAY ────────────────────────────────────────
   const PRICE_OR_CLOSE =
-    /\$\s?(?:1,?000|1,?500|2,?500|3,?500|10,?500)\b|payment link|implementation link|secure link|checkout|twenty[\s-]*five hundred|fifteen hundred|one thousand/i;
+    /\$\s?(?:357|1,?250|1,?607|1,?964|2,?500|4,?463)\b|payment link|implementation link|secure link|checkout|twenty[\s-]*five hundred|twelve hundred fifty|three hundred fifty[\s-]*seven/i;
 
   function checkoutHTML() {
     return (
