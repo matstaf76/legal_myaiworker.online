@@ -1,5 +1,5 @@
 /* ============================================================
-   Legal.MyAIworker.online — bot.js
+   Fake Law Firm — Riley voice integration
    Riley AI Chat + Vapi Voice Widget
    ============================================================ */
 
@@ -9,87 +9,16 @@
   // ── CONFIG ──────────────────────────────────────────────────
   const CONFIG = {
     botName: 'Riley',
-    companyName: 'Legal.MyAIworker.online',
+    companyName: 'Fake Law Firm',
 
     // Vapi public keys are designed for browser use.
     vapiPublicKey: '19fae66b-8dd9-463f-8bab-b887a929da78',
     vapiAssistantId: '99f20fd1-f643-4612-b50e-89b2ed33b409',
 
-    legalImplementationUrl:
-      'https://buy.stripe.com/9B614o3lQfpVfMF7351kA0l',
-
     teaserHide: 9000,
   };
 
-  const SYSTEM_PROMPT = `
-You are Riley, the calm, precise, consultative voice sales agent and live
-demonstration guide for Legal.MyAIworker.online.
-
-You speak with attorneys, law-firm owners, partners, administrators, and
-authorized law-firm staff.
-
-Legal.MyAIworker.online is a premium AI client-engagement and practice-
-automation system for modern law firms. It coordinates voice, website chat,
-email AI, preliminary intake, consultation scheduling, follow-up, CRM records,
-and approved workflows.
-
-Riley is the sales agent and immediate conversational demonstration. Riley is
-not a lawyer and never gives legal advice.
-
-Riley has no live backend connections. Riley cannot access or update calendars,
-CRM records, email, intake forms, medical records, billing systems, Stripe,
-websites, phone systems, or workflows. A demonstration is a fictional
-simulation and never performs a real business action.
-
-The website and Riley may present only this one-time implementation checkout:
-
-https://buy.stripe.com/9B614o3lQfpVfMF7351kA0l
-
-Pricing:
-- Legal AI implementation is $2,500 under the Labor Day Special through
-  September 7, 2026.
-- The first user is $1,250 per month.
-- Each additional user is $357 per month.
-- Employee count does not automatically equal user count. Charge only for
-  people who need their own AI-enabled access or workflow.
-- The first recurring invoice is sent 30 days after go-live.
-- Service is month-to-month and may be canceled anytime.
-- Go-live is guaranteed within three business days of implementation payment,
-  or the implementation payment is refunded.
-
-Voice rules:
-- Keep every response to one to three short spoken sentences.
-- Ask one question at a time.
-- Use plain spoken English.
-- Do not use markdown, headings, tables, long lists, or emojis in spoken
-  responses.
-- Never read a raw URL aloud.
-- When saying Legal.MyAIworker.online aloud, pronounce it naturally as
-  "Legal dot My AI Worker dot online."
-- Never spell the website address letter by letter.
-- Say prices naturally: "twenty-five hundred for implementation,"
-  "twelve hundred fifty a month for the first user," and
-  "three hundred fifty-seven a month for each additional user."
-- Never provide legal advice.
-- Never imply that contacting a firm creates an attorney-client relationship.
-- Never claim that a simulated action was saved, scheduled, sent, routed,
-  verified, or completed.
-
-When an attorney asks for a demonstration, begin a fictional role-play
-immediately. Tell the attorney to use fictional details. Behave like the
-deployed intake agent, ask one realistic question at a time, and retain all
-legal-advice, confidentiality, conflict-screening, and attorney-client-
-relationship boundaries.
-
-Lead with outcomes rather than a feature dump. Diagnose the firm's main
-operational bottleneck, explain the most relevant benefit, answer objections
-briefly, and ask directly whether the visitor is ready to start implementation.
-
-First response:
-"Hi, I'm Riley, the sales and live demo guide for modern law firms. What would
-make the biggest difference to your practice right now: faster responses to
-new inquiries, smoother intake and scheduling, or more consistent follow-up?"
-`.trim();
+  // External prompt: manual update in RILEY-PROMPT-UPDATE.md.
 
   // ── STATE ───────────────────────────────────────────────────
   let isOpen = false;
@@ -97,8 +26,9 @@ new inquiries, smoother intake and scheduling, or more consistent follow-up?"
   let vapiActive = false;
   let vapiLoading = false;
   let vapiModulePromise = null;
-  let checkoutOffered = false;
-  let introStarted = false;
+  let callAttempt = 0;
+  let sectionContext = 'Legal AI / Introduction';
+  let sentContext = '';
   let voiceFailureReported = false;
 
   const $ = (id) => document.getElementById(id);
@@ -107,8 +37,9 @@ new inquiries, smoother intake and scheduling, or more consistent follow-up?"
   function init() {
     bindEvents();
     injectMicStyles();
-    injectMicNotice();
+    // Existing sales microphone guidance is provided by its own CTA.
     scheduleTeaserHide();
+    setVoiceUI(false);
 
     const setup = $('aiw-setup');
     const chat = $('aiw-chat');
@@ -116,17 +47,7 @@ new inquiries, smoother intake and scheduling, or more consistent follow-up?"
     if (setup) setup.style.display = 'none';
     if (chat) chat.style.display = 'flex';
 
-    /*
-     * Download the SDK while the visitor reads the page.
-     * This does not start a call or consume Vapi minutes.
-     */
-    if (vapiConfigured()) {
-      setTimeout(function () {
-        loadVapiModule().catch(function (error) {
-          console.error('Riley Vapi SDK preload failed:', error);
-        });
-      }, 300);
-    }
+    // Load the external SDK only after an explicit voice request.
   }
 
   function vapiConfigured() {
@@ -272,6 +193,7 @@ new inquiries, smoother intake and scheduling, or more consistent follow-up?"
       return;
     }
 
+    const attempt = ++callAttempt;
     voiceFailureReported = false;
     vapiLoading = true;
     openWindow();
@@ -280,6 +202,7 @@ new inquiries, smoother intake and scheduling, or more consistent follow-up?"
 
     try {
       const client = await createVapiClient();
+      if (attempt !== callAttempt) return;
 
       /*
        * Vapi owns the microphone request.
@@ -287,11 +210,12 @@ new inquiries, smoother intake and scheduling, or more consistent follow-up?"
        */
       await client.start(CONFIG.vapiAssistantId);
     } catch (error) {
-      handleVapiStartFailure(error);
+      if (attempt === callAttempt) handleVapiStartFailure(error);
     }
   }
 
   function stopVapiCall() {
+    callAttempt += 1;
     if (vapi && (vapiActive || vapiLoading)) {
       try {
         vapi.stop();
@@ -306,10 +230,13 @@ new inquiries, smoother intake and scheduling, or more consistent follow-up?"
   }
 
   function handleVapiCallStart() {
+    if (!vapiLoading && !vapiActive) { vapi.stop(); return; }
     vapiActive = true;
     vapiLoading = false;
     voiceFailureReported = false;
-    setVoiceUI(true, '🎙️ Live — just talk');
+    setVoiceUI(true, 'Voice session active');
+    sentContext = '';
+    sendSectionContext();
   }
 
   function handleVapiCallEnd() {
@@ -317,10 +244,7 @@ new inquiries, smoother intake and scheduling, or more consistent follow-up?"
     vapiLoading = false;
     setVoiceUI(false);
 
-    addBotMessageHTML(
-      '<strong>Call ended.</strong> Tap the microphone to talk to Riley again.' +
-        checkoutHTML()
-    );
+    addBotMessage('Call ended. Your transcript stays here while you browse. Start a new call whenever you like.');
   }
 
   function handleVapiError(error) {
@@ -351,7 +275,7 @@ new inquiries, smoother intake and scheduling, or more consistent follow-up?"
 
     if (/notallowed|permission|denied|microphone|audio capture/i.test(detail)) {
       addBotMessage(
-        '⚠️ Microphone access was not granted. Allow microphone access in your browser site settings, then tap the microphone to try again.'
+        '⚠️ Microphone access was not granted. Allow microphone access in your browser site settings, then select Start voice call to try again.'
       );
       return;
     }
@@ -406,26 +330,6 @@ new inquiries, smoother intake and scheduling, or more consistent follow-up?"
     startVapiCall();
   };
 
-  function startFromIntro() {
-    if (introStarted) return;
-    introStarted = true;
-
-    const intro = $('aiw-intro');
-    if (intro) {
-      intro.classList.add('aiw-intro-out');
-      intro.setAttribute('aria-hidden', 'true');
-      intro.setAttribute('tabindex', '-1');
-    }
-
-    window.aiwStartVoice();
-
-    if (intro) {
-      setTimeout(function () {
-        intro.remove();
-      }, 450);
-    }
-  }
-
   window.aiwDismissVoice = function () {
     stopVapiCall();
 
@@ -441,9 +345,12 @@ new inquiries, smoother intake and scheduling, or more consistent follow-up?"
     const text = input.value.trim();
     if (!text) return;
 
+    if (!vapiActive) {
+      addBotMessage('Start a voice call first to send typed messages. Your draft is still here.');
+      return;
+    }
     input.value = '';
     input.style.height = 'auto';
-
     sendText(text);
   }
 
@@ -452,7 +359,7 @@ new inquiries, smoother intake and scheduling, or more consistent follow-up?"
 
     if (!vapiActive || !vapi) {
       addBotMessage(
-        'Tap the microphone to start talking with Riley.'
+        'Select Start voice call to start talking with Riley.'
       );
       return;
     }
@@ -477,32 +384,8 @@ new inquiries, smoother intake and scheduling, or more consistent follow-up?"
 
   window.aiwSendText = sendText;
 
-  // ── CHECKOUT DISPLAY ────────────────────────────────────────
-  const PRICE_OR_CLOSE =
-    /\$\s?(?:357|1,?250|1,?607|1,?964|2,?500|4,?463)\b|payment link|implementation link|secure link|checkout|twenty[\s-]*five hundred|twelve hundred fifty|three hundred fifty[\s-]*seven/i;
-
-  function checkoutHTML() {
-    return (
-      '<div class="aiw-cta-group">' +
-      '<a href="' +
-      escapeAttribute(CONFIG.legalImplementationUrl) +
-      '" class="aiw-cta-btn aiw-cta-btn--amber" ' +
-      'target="_blank" rel="noopener">' +
-      '⚖️ Claim the Labor Day Special — $2,500' +
-      '</a>' +
-      '</div>'
-    );
-  }
-
   function rileySaid(text) {
-    const showCheckout =
-      checkoutOffered || PRICE_OR_CLOSE.test(String(text));
-
-    if (showCheckout) checkoutOffered = true;
-
-    addBotMessageHTML(
-      formatText(text) + (showCheckout ? checkoutHTML() : '')
-    );
+    addBotMessageHTML(formatText(text));
   }
 
   // ── WIDGET EVENTS ───────────────────────────────────────────
@@ -512,22 +395,20 @@ new inquiries, smoother intake and scheduling, or more consistent follow-up?"
     const send = $('aiw-send');
     const input = $('aiw-input');
     const voice = $('aiw-voice-btn');
-    const intro = $('aiw-intro');
+
 
     if (fab) fab.addEventListener('click', toggleWindow);
     if (teaser) teaser.addEventListener('click', toggleWindow);
     if (send) send.addEventListener('click', sendMessage);
     if (voice) voice.addEventListener('click', toggleVoice);
 
-    if (intro) {
-      intro.addEventListener('click', startFromIntro);
-      intro.addEventListener('keydown', function (event) {
-        if (event.key === 'Enter' || event.key === ' ') {
-          event.preventDefault();
-          startFromIntro();
-        }
-      });
-    }
+    $('aiw-minimize').addEventListener('click', toggleWindow);
+    $('aiw-end-call').addEventListener('click', stopVapiCall);
+    document.querySelector('.voice-dismiss').addEventListener('click', stopVapiCall);
+    $('aiw-window').addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') { event.preventDefault(); toggleWindow(); }
+    });
+    window.addEventListener('pagehide', stopVapiCall);
 
     if (input) {
       input.addEventListener('keydown', function (event) {
@@ -542,44 +423,35 @@ new inquiries, smoother intake and scheduling, or more consistent follow-up?"
       });
     }
 
-    /*
-     * The hero prompt is a role="button" div.
-     * Give keyboard users the same deliberate start behavior.
-     */
-    const heroPrompt = document.querySelector('.hero-voice-prompt');
-
-    if (heroPrompt) {
-      heroPrompt.addEventListener('keydown', function (event) {
-        if (event.key === 'Enter' || event.key === ' ') {
-          event.preventDefault();
-          window.aiwStartVoice();
-        }
-      });
-    }
   }
 
   // ── WIDGET WINDOW ───────────────────────────────────────────
   function toggleWindow() {
+    if (window.aiwFloatPanel) window.aiwFloatPanel();
     isOpen = !isOpen;
 
     const win = $('aiw-window');
     const fab = $('aiw-fab');
     const teaser = $('aiw-teaser');
 
-    if (win) win.classList.toggle('open', isOpen);
+    if (win) {
+      win.classList.toggle('open', isOpen);
+      win.inert = !isOpen;
+    }
 
     if (fab) {
       fab.classList.toggle('open', isOpen);
       fab.setAttribute('aria-expanded', String(isOpen));
+      fab.setAttribute('aria-label', isOpen ? 'Minimize Riley' : ((vapiActive || vapiLoading) ? 'Open Riley — voice session active' : 'Open Riley'));
     }
 
     if (teaser && isOpen) {
       teaser.classList.add('hidden');
     }
 
-    if (!isOpen && (vapiActive || vapiLoading)) {
-      stopVapiCall();
-    }
+    // Minimize without stopping the voice client or discarding messages.
+    if (isOpen) $('aiw-minimize').focus();
+    else if (fab) fab.focus();
   }
 
   function openWindow() {
@@ -587,6 +459,27 @@ new inquiries, smoother intake and scheduling, or more consistent follow-up?"
   }
 
   window.aiwToggle = toggleWindow;
+  window.aiwOpen = function () {
+    if (window.aiwFloatPanel) window.aiwFloatPanel();
+    openWindow();
+  };
+
+  function sendSectionContext() {
+    if (!vapiActive || !vapi || sentContext === sectionContext) return;
+    try {
+      vapi.send({ type: 'add-message', triggerResponseEnabled: false, message: {
+        role: 'system',
+        content: 'Website viewing context: ' + sectionContext + '. Context only; do not interrupt or change roles merely because the visitor scrolls. Respond to their intent. No form content is available.'
+      } });
+      sentContext = sectionContext;
+    } catch (error) { console.warn('Riley section context could not be sent.', error); }
+  }
+  window.aiwSetContext = function (context) {
+    const allowed = Array.from(document.querySelectorAll('[data-riley-context]'), element => element.dataset.rileyContext);
+    if (!allowed.includes(context)) return;
+    sectionContext = context;
+    sendSectionContext();
+  };
 
   // ── VOICE UI ────────────────────────────────────────────────
   function setVoiceUI(live, label) {
@@ -600,12 +493,23 @@ new inquiries, smoother intake and scheduling, or more consistent follow-up?"
         live ? 'End voice call' : 'Start voice call'
       );
       voiceButton.title = live ? 'End voice call' : 'Start voice call';
+      voiceButton.textContent = live ? 'End voice call' : 'Start voice call';
     }
 
     if (input) {
       input.placeholder = live
         ? label || '🎙️ Live — just talk'
-        : 'Type or speak...';
+        : 'Type during a live call';
+    }
+    const status = document.querySelector('.aiw-status');
+    if (status) status.textContent = live ? (label || 'Voice session active') : 'AI assistant · Ready to connect';
+    const end = $('aiw-end-call');
+    if (end) end.disabled = !live;
+    const fab = $('aiw-fab');
+    if (fab) {
+      fab.dataset.live = String(Boolean(live));
+      fab.title = live ? 'Voice session active — open Riley to end the call' : 'Open Riley';
+      if (!isOpen) fab.setAttribute('aria-label', live ? 'Open Riley — voice session active' : 'Open Riley');
     }
   }
 

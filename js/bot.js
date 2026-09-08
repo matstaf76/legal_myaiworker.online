@@ -16,7 +16,7 @@
     vapiAssistantId: '99f20fd1-f643-4612-b50e-89b2ed33b409',
 
     legalImplementationUrl:
-      'https://buy.stripe.com/9B614o3lQfpVfMF7351kA0l',
+      'https://buy.stripe.com/6oUbJ29Ke1z5fMFcnp1kA0o',
 
     teaserHide: 9000,
   };
@@ -43,11 +43,10 @@ simulation and never performs a real business action.
 
 The website and Riley may present only this one-time implementation checkout:
 
-https://buy.stripe.com/9B614o3lQfpVfMF7351kA0l
+https://buy.stripe.com/6oUbJ29Ke1z5fMFcnp1kA0o
 
 Pricing:
-- Legal AI implementation is $2,500 under the Labor Day Special through
-  September 7, 2026.
+- Legal AI implementation is a one-time fee of $3,500.
 - The first user is $1,250 per month.
 - Each additional user is $357 per month.
 - Employee count does not automatically equal user count. Charge only for
@@ -67,7 +66,7 @@ Voice rules:
 - When saying Legal.MyAIworker.online aloud, pronounce it naturally as
   "Legal My AI Worker dot online."
 - Never spell the website address letter by letter.
-- Say prices naturally: "twenty-five hundred for implementation,"
+- Say prices naturally: "thirty-five hundred for implementation,"
   "twelve hundred fifty a month for the first user," and
   "three hundred fifty-seven a month for each additional user."
 - Never provide legal advice.
@@ -432,7 +431,7 @@ new inquiries, smoother intake and scheduling, or more consistent follow-up?"
       escapeAttribute(CONFIG.legalImplementationUrl) +
       '" class="aiw-cta-btn aiw-cta-btn--amber" ' +
       'target="_blank" rel="noopener">' +
-      '⚖️ Claim the Labor Day Special — $2,500' +
+      '⚖️ Get Started — $3,500' +
       '</a>' +
       '</div>'
     );
