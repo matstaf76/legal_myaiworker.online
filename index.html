@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <base href="/">
   <meta name="description" content="Legal.MyAIworker.online is a premium AI client engagement and practice automation system for modern law firms, combining voice, website chat, email, intake, scheduling, follow-up, and connected workflows.">
   <meta name="theme-color" content="#0c0d0f">
   <meta property="og:title" content="The AI Advantage for Modern Law Firms | Legal.MyAIworker.online">
@@ -25,9 +24,10 @@
   <link rel="icon" href="favicon.ico" sizes="48x48">
   <link rel="icon" type="image/png" sizes="192x192" href="images/icon-192.png">
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-  <link rel="stylesheet" href="css/style.css?v=20260901-2">
-  <link rel="stylesheet" href="css/pricing.css?v=20260901-1">
-  <link rel="stylesheet" href="css/widget.css?v=20260901-1">
+  <link rel="stylesheet" href="css/widget.css">
+  <link rel="stylesheet" href="css/combined.css">
+  <link rel="stylesheet" href="css/legal-sales-scoped.css">
+  <link rel="stylesheet" href="css/fake-law.css">
 
   <script type="application/ld+json">
   {
@@ -39,7 +39,7 @@
         "name": "Legal.MyAIworker.online",
         "url": "https://legal.myaiworker.online/",
         "logo": "https://legal.myaiworker.online/images/logo-512.png",
-        "email": "SupremeDude@sometechdude.com",
+        "email": "matt@sometechdude.com",
         "description": "Premium AI client engagement and practice automation for modern law firms.",
         "parentOrganization": {
           "@type": "Organization",
@@ -63,8 +63,8 @@
         "offers": [
           {
             "@type": "Offer",
-            "name": "Legal AI Implementation — Labor Day Special",
-            "price": "2500",
+            "name": "Legal AI Implementation",
+            "price": "3500",
             "priceCurrency": "USD"
           }
         ]
@@ -91,10 +91,10 @@
           },
           {
             "@type": "Question",
-            "name": "What is the Labor Day Special?",
+            "name": "What is the implementation price?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Legal AI implementation is regularly $5,000 and is discounted to $2,500 through September 7, 2026. Monthly service is $1,250 for the first user plus $357 for each additional user. Employee count does not automatically equal paid user count; only people who need their own AI-enabled access or workflow count as users."
+              "text": "Legal AI implementation is a one-time fee of $3,500. Monthly service is $1,250 for the first user plus $357 for each additional user. Employee count does not automatically equal paid user count; only people who need their own AI-enabled access or workflow count as users."
             }
           },
           {
@@ -118,29 +118,36 @@
     ]
   }
   </script>
+
 </head>
 <body>
+<a class="page-skip" href="#experience">Skip to content</a>
+<main id="experience" tabindex="-1">
+<div id="legal-sales">
+
 
   <!-- ── NAV ───────────────────────────────────────────────── -->
   <nav class="site-nav" role="navigation" aria-label="Main navigation">
     <div class="container nav-inner">
-      <a href="/" class="nav-logo"><img src="images/logo-512.png" alt="MyAIworker mascot" class="nav-logo-img">My<span>AI</span>Worker</a>
+      <a href="#home" class="nav-logo"><img src="images/logo-512.png" alt="MyAIworker mascot" class="nav-logo-img"><span class="legal-brand-name">Legal.MyAIworker.online</span></a>
       <ul class="nav-links" role="list">
         <li><a href="#the-gap">The Compliance Gap</a></li>
         <li><a href="#how-it-works">How It Works</a></li>
-        <li><a href="#time-calculator">Calculators</a></li>
+        <li><a href="#time-calculator">Calculator</a></li>
         <li><a href="#pricing">Plans</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
-      <a href="#pricing" class="btn btn--primary nav-cta">See Legal AI Pricing</a>
+      <button type="button" class="btn btn--primary nav-cta" onclick="window.aiwStartVoice()">Talk to Riley</button>
     </div>
   </nav>
 
   <!-- ── HERO ──────────────────────────────────────────────── -->
-  <section class="hero" id="home" aria-label="Hero">
+  <section class="hero" id="home" data-riley-context="Legal AI / Introduction" aria-label="Hero">
     <div class="hero-bg" aria-hidden="true"></div>
     <div class="hero-grid-lines" aria-hidden="true"></div>
     <div class="container hero-content">
+
+<button type="button" class="agent-call-button" id="talk-to-agent" onclick="window.aiwStartVoice()" aria-describedby="agent-call-note"><svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="8" y="2" width="8" height="13" rx="4"/><path d="M5 10v2a7 7 0 0 0 14 0v-2M12 19v3M8 22h8"/></svg><span>Talk to an agent<small>Speak with Riley, our AI sales &amp; demo guide</small></span><span class="agent-call-arrow" aria-hidden="true">↗</span></button><p class="agent-call-note" id="agent-call-note">Click to start a voice conversation. Allow microphone access when prompted.</p>
 
       <div class="hero-eyebrow fade-up">
         <span class="dot" aria-hidden="true"></span>
@@ -160,10 +167,10 @@
 
       <div class="hero-actions fade-up fade-up-3">
         <a href="#pricing" class="btn btn--primary btn--lg">See Legal AI Pricing</a>
-        <a href="#pricing" class="btn btn--outline btn--lg">See Plans &amp; Pricing</a>
+        <a href="#fake-law-demo" class="btn btn--outline btn--lg">Explore the Fake Law Firm Demo ↓</a>
       </div>
 
-      <div class="hero-voice-prompt fade-up fade-up-4" onclick="window.aiwStartVoice &amp;&amp; window.aiwStartVoice()" role="button" tabindex="0" aria-label="Start voice chat with Riley AI">
+      <button type="button" class="hero-voice-prompt fade-up fade-up-4" onclick="window.aiwStartVoice()" aria-label="Start voice chat with Riley AI">
         <div class="mic-icon" aria-hidden="true">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
@@ -172,7 +179,7 @@
           </svg>
         </div>
         <span>Talk to Riley — hear how the complete law-firm system works, what it improves, and what it costs.</span>
-      </div>
+      </button>
 
       <div class="hero-stats fade-up fade-up-5">
         <div class="hero-stat">
@@ -184,8 +191,8 @@
           <span class="label">Lawyer in the Loop</span>
         </div>
         <div class="hero-stat">
-          <span class="num">$2,500</span>
-          <span class="label">Special Implementation</span>
+          <span class="num">$3,500</span>
+          <span class="label">One-Time Implementation</span>
         </div>
         <div class="hero-stat">
           <span class="num">3 Days</span>
@@ -227,7 +234,7 @@
   </section>
 
   <!-- ── THE COMPLIANCE GAP ────────────────────────────────── -->
-  <section class="section section--alt" id="the-gap" aria-labelledby="gap-title">
+  <section class="section section--alt" id="the-gap" data-riley-context="Legal AI / The compliance gap" aria-labelledby="gap-title">
     <div class="container">
       <span class="section-label">The Competitive Shift</span>
       <h2 class="section-title" id="gap-title">AI Is Changing Legal Work.<br>Standing Still Is the Risk.</h2>
@@ -261,7 +268,7 @@
   </section>
 
   <!-- ── HOW IT WORKS ──────────────────────────────────────── -->
-  <section class="section" id="how-it-works" aria-labelledby="how-title">
+  <section class="section" id="how-it-works" data-riley-context="Legal AI / How it works" aria-labelledby="how-title">
     <div class="container">
       <span class="section-label">The Process</span>
       <h2 class="section-title" id="how-title">Live in 3 Business Days.</h2>
@@ -294,7 +301,7 @@
   </section>
 
   <!-- ── FREE TIME-RECOVERY CALCULATOR ─────────────────────── -->
-  <section class="section time-calculator-section" id="time-calculator" aria-labelledby="time-calculator-title">
+  <section class="section time-calculator-section" id="time-calculator" data-riley-context="Legal AI / Time calculator" aria-labelledby="time-calculator-title">
     <div class="container">
       <span class="section-label">Free · Anonymous · About One Minute</span>
       <h2 class="section-title" id="time-calculator-title">Where Does Your Week Go?</h2>
@@ -381,7 +388,6 @@
           <p class="estimate-note">This planning estimate uses conservative assistance rates. It represents time AI may assist with—not guaranteed savings, revenue, or eliminated positions.</p>
           <div class="time-result-actions">
             <a class="btn btn--primary" href="#how-it-works">See How the Legal System Works</a>
-            <a class="btn btn--outline" href="#plan-calculator">Estimate AI Workload</a>
             <button class="btn btn--outline" type="button" onclick="window.aiwToggle &amp;&amp; window.aiwToggle()">Talk to Riley</button>
           </div>
           <p class="conversation-note">Talking to Riley starts a separate conversation. Your calculator answers are not shared with Riley automatically.</p>
@@ -390,52 +396,8 @@
     </div>
   </section>
 
-  <!-- ── PLAN AND OPPORTUNITY CALCULATORS ──────────────────── -->
-  <section class="section" id="plan-calculator" aria-labelledby="calculator-title">
-    <div class="container">
-      <span class="section-label">Find Your Workload Fit</span>
-      <h2 class="section-title" id="calculator-title">Plan &amp; Workload Calculator</h2>
-      <p class="section-sub">Estimate monthly AI workload from call volume and office complexity. This is a general MyAIworker planning estimate; Legal implementation and recurring pricing remain exactly as listed below and are confirmed before purchase.</p>
-
-      <form class="plan-calculator" id="planCalculator">
-        <div class="calculator-fields">
-          <label>Average calls per day<input type="number" id="callsPerDay" min="0" max="1000" step="1" value="10" inputmode="numeric"></label>
-          <label>Typical call duration
-            <select id="callType">
-              <option value="2.5">Quick — about 2–3 minutes</option>
-              <option value="4.5" selected>Standard — about 4–5 minutes</option>
-              <option value="7">Detailed — about 6–8 minutes</option>
-            </select>
-          </label>
-          <label>Office-system operators
-            <select id="operatorCount">
-              <option value="1" selected>1 operator</option>
-              <option value="3">2–3 operators</option>
-              <option value="4">4+ operators</option>
-            </select>
-          </label>
-        </div>
-        <div class="calculator-result" aria-live="polite">
-          <span class="result-label">Estimated monthly AI workload</span>
-          <strong id="estimatedMinutes">1,368 minutes</strong>
-          <span class="result-label">Recommended general workload plan</span>
-          <strong class="result-plan" id="recommendedPlan">Business — $500/month</strong>
-          <p id="recommendationReason">Sized mainly for your estimated call workload, with office-system operators considered second.</p>
-          <a href="#pricing" class="btn btn--primary">View Legal Pricing</a>
-        </div>
-      </form>
-
-      <div class="roi-box">
-        <div><h3>Missed-Call Opportunity Estimate</h3><p>Estimate the potential value represented by calls your firm currently misses. This is an opportunity estimate, not a revenue promise.</p></div>
-        <label>Missed calls per month<input type="number" id="missedCalls" min="0" step="1" value="0" inputmode="numeric"></label>
-        <label>Average matter/client value<input type="number" id="customerValue" min="0" step="25" value="0" inputmode="decimal"></label>
-        <div class="roi-result"><span>Potential opportunity represented</span><strong id="opportunityValue">$0/month</strong></div>
-      </div>
-    </div>
-  </section>
-
   <!-- ── PRICING ───────────────────────────────────────────── -->
-  <section class="section section--alt" id="pricing" aria-labelledby="pricing-title">
+  <section class="section section--alt" id="pricing" data-riley-context="Legal AI / Pricing" aria-labelledby="pricing-title">
     <div class="container">
       <span class="section-label">Setup &amp; Included Services</span>
       <h2 class="section-title" id="pricing-title">Everything Needed<br>To Go Live.</h2>
@@ -448,7 +410,7 @@
 
         <!-- LEGAL -->
         <div class="pricing-card pricing-card--featured" id="buy-legal">
-          <span class="card-badge card-badge--amber">Labor Day Special · Through September 7, 2026</span>
+          <span class="card-badge card-badge--amber">One-Time Implementation</span>
           <span class="card-icon" aria-hidden="true">⚖️</span>
           <div class="card-header">
             <div class="card-name">Legal AI Implementation</div>
@@ -456,12 +418,12 @@
           </div>
 
           <div class="card-price">
-            <div class="price-was">Regular implementation: $5,000</div>
+            <div class="price-was">&nbsp;</div>
             <div class="price-now">
-              <span class="price-amount">$2,500</span>
+              <span class="price-amount">$3,500</span>
               <span class="price-period">implementation</span>
             </div>
-            <div class="price-note">Save $2,500 through September 7, 2026</div>
+            <div class="price-note">One-time implementation fee</div>
           </div>
 
           <div class="card-divider" aria-hidden="true"></div>
@@ -490,7 +452,7 @@
           <div class="card-divider" aria-hidden="true"></div>
 
           <div class="card-cta">
-            <a href="https://buy.stripe.com/9B614o3lQfpVfMF7351kA0l" class="btn btn--primary btn--full">Claim the Labor Day Special — $2,500</a>
+            <a href="https://buy.stripe.com/6oUbJ29Ke1z5fMFcnp1kA0o" class="btn btn--primary btn--full">Get Started — $3,500</a>
             <p class="card-guarantee">
               Live in 3 business days or your setup fee back &middot; First monthly payment due 30 days after go-live &middot; Cancel anytime
             </p>
@@ -500,12 +462,12 @@
 
       </div>
 
-      <div class="advanced-note"><p><strong>Month-to-month service.</strong> Your first monthly bill is sent by email 30 days after go-live. Only the discounted implementation fee is due today.</p></div>
+      <div class="advanced-note"><p><strong>Month-to-month service.</strong> Your first monthly bill is sent by email 30 days after go-live. Only the one-time implementation fee is due today.</p></div>
     </div>
   </section>
 
   <!-- ── FAQ ───────────────────────────────────────────────── -->
-  <section class="section" id="faq" aria-labelledby="faq-title">
+  <section class="section" id="faq" data-riley-context="Legal AI / Questions" aria-labelledby="faq-title">
     <div class="container">
       <span class="section-label">Straight Answers</span>
       <h2 class="section-title" id="faq-title">What Modern Law Firms Need to Know</h2>
@@ -531,8 +493,8 @@
         </div>
         <div class="step-card">
           <div class="step-body">
-            <h3>What does the Labor Day Special include?</h3>
-            <p>Legal AI implementation is regularly $5,000 and is discounted to $2,500 through September 7, 2026. Monthly service is $1,250 for the first user plus $357 for each additional user. Employee count does not automatically equal user count; only people who need their own AI-enabled access or workflow count as users.</p>
+            <h3>What does Legal AI implementation include?</h3>
+            <p>Legal AI implementation is a one-time fee of $3,500. Monthly service is $1,250 for the first user plus $357 for each additional user. Employee count does not automatically equal user count; only people who need their own AI-enabled access or workflow count as users.</p>
           </div>
         </div>
         <div class="step-card">
@@ -561,7 +523,7 @@
   </section>
 
   <!-- ── CTA ───────────────────────────────────────────────── -->
-  <section class="section section--dark text-center" id="contact" aria-labelledby="cta-title">
+  <section class="section section--dark text-center" id="contact" data-riley-context="Legal AI / Contact" aria-labelledby="cta-title">
     <div class="container">
       <span class="section-label">Built for Firms That Intend to Lead</span>
       <h2 class="section-title" id="cta-title">Lead the Shift.<br>Keep the Lawyer in the Loop.</h2>
@@ -578,11 +540,11 @@
   <!-- ── FOOTER ────────────────────────────────────────────── -->
   <footer class="site-footer" role="contentinfo">
     <div class="container footer-inner">
-      <div class="footer-logo">My<span>AI</span>Worker</div>
+      <div class="footer-logo">Legal.MyAIworker.online</div>
       <nav class="footer-links" aria-label="Footer navigation">
         <a href="#the-gap">The Compliance Gap</a>
         <a href="#how-it-works">How It Works</a>
-        <a href="#time-calculator">Calculators</a>
+        <a href="#time-calculator">Calculator</a>
         <a href="#pricing">Plans</a>
         <a href="#faq">FAQ</a>
         <a href="privacy.html">Privacy Policy</a>
@@ -598,146 +560,76 @@
     </div>
   </footer>
 
-  <div id="aiw-intro" role="button" tabindex="0" aria-label="Meet Riley. Tap to start the voice demonstration.">
-    <div class="aiw-intro-inner">
-      <div class="aiw-intro-orb" aria-hidden="true">⚖</div>
-      <div class="aiw-intro-title">Meet Riley</div>
-      <p class="aiw-intro-sub"><strong>Riley talks back out loud.</strong><br>Tap anywhere to start the voice demonstration and allow microphone access when asked.</p>
-      <p class="aiw-intro-disclaimer">Riley is AI, not an attorney, and does not provide legal advice. No attorney-client relationship is created.</p>
-    </div>
-  </div>
 
-  <!-- ── AI WIDGET (Riley) ─────────────────────────────────── -->
-  <div id="aiw-launcher" aria-label="AI chat assistant">
+<section class="demo-transition"><span>THE LIVE EXPERIENCE</span><h2>Now step inside Fake Law Firm.</h2><p>A fictional firm. The same Riley. Keep scrolling to experience the product.</p><a href="#fake-law-demo">Enter the demonstration ↓</a></section>
+</div>
+<div id="fake-law-demo">
+<div class="demo-progress" aria-hidden="true"><span></span></div>
 
-    <div id="aiw-teaser" role="button" tabindex="0" aria-label="Open chat with Riley AI">
-      👋 Ask Riley — Law Firm AI &amp; Pricing
-    </div>
+<a class="skip-link" href="#demo-main">Skip to content</a>
+<div class="demo-strip"><a href="#home">↑ Back to Legal AI</a><span aria-hidden="true">●</span> FICTIONAL FIRM. REAL-TIME AI DEMO. <a href="#demo-notice">How this demo works ↗</a></div>
+<header class="site-header"><div class="container header-inner">
+<a class="brand" href="#fake-law-demo" aria-label="Fake Law Firm home"><span class="brand-mark" aria-hidden="true">F/L</span><span>FAKE LAW FIRM<small>A FICTIONAL PRACTICE</small></span></a>
+<button class="menu-toggle" aria-expanded="false" aria-controls="main-nav">Menu ☰</button>
+<nav id="main-nav" aria-label="Main navigation"><a href="#practice">Practice areas</a><a href="#approach">Our approach</a><a href="#attorneys">Our people</a><a href="#questions">FAQs</a><a class="button small" href="#fake-contact">Schedule a legal consultation ↗</a></nav>
+</div></header>
+<section id="demo-main" tabindex="-1">
+<section class="hero" data-riley-context="Fake Law Firm / Introduction"><div class="container hero-grid">
+<div class="hero-copy"><p class="eyebrow">— PEOPLE FIRST. CLARITY ALWAYS.</p><h2 class="demo-title">When life gets<br>complicated,<br><em>start here.</em></h2>
+<p class="hero-description">A thoughtful approach. A clear next step. Explore what a more approachable legal experience could feel like.</p>
+<div class="actions"><a href="#fake-contact" class="button">Schedule a legal consultation ↗</a><button class="text-button" data-open-riley>Meet Riley, our AI assistant →</button></div><p class="fine-print">A fictional law firm experience. No legal services or advice.</p></div>
+<div class="hero-art" role="img" aria-label="An abstract F built from document lines and connected points"><span class="art-caption">COMPLEXITY, MEET CLARITY.</span><div class="document-lines" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div><span class="graphic-f" aria-hidden="true">F</span><span class="network-node node-one"></span><span class="network-node node-two"></span><span class="network-node node-three"></span><span class="art-signature">A clearer<br>way forward.</span><span class="art-index">FAKE LAW FIRM / DEMONSTRATION</span></div>
+</div><div class="container hero-bottom"><span>FOUR AREAS OF FOCUS</span><p>For life's turning points.<br>And the everyday decisions in between.</p><a href="#practice">Explore below ↓</a></div></section>
+<section class="section" id="practice" data-riley-context="Fake Law Firm / Practice overview" aria-labelledby="practice-title"><div class="container">
+<div class="section-heading"><div><p class="eyebrow">01 / PRACTICE AREAS</p><h2 id="practice-title">What brings<br>you here?</h2></div><p>Four ways to explore the demo. Choose a practice area to see how a first conversation might begin.</p></div>
+<div class="practice-grid">
+<article class="practice-card"><span class="card-number">01 / PERSONAL INJURY</span><h3>I was injured.</h3><a href="#personal-injury" data-practice="Personal Injury">Find your starting point ↗</a></article>
+<article class="practice-card"><span class="card-number">02 / CRIMINAL DEFENSE</span><h3>I'm facing criminal charges.</h3><a href="#criminal-defense" data-practice="Criminal Defense">Find your starting point ↗</a></article>
+<article class="practice-card"><span class="card-number">03 / FAMILY LAW</span><h3>My family situation changed.</h3><a href="#family-law" data-practice="Family Law">Find your starting point ↗</a></article>
+<article class="practice-card"><span class="card-number">04 / BUSINESS / COMMERCIAL LAW</span><h3>My business needs clarity.</h3><a href="#business-law" data-practice="Business / Commercial Law">Find your starting point ↗</a></article>
+</div></div></section>
+<div class="practice-stories"><section class="practice-story injury" id="personal-injury" data-riley-context="Fake Law Firm / Personal Injury" aria-labelledby="personal-injury-title"><div class="container story-grid"><div class="story-visual" aria-hidden="true"><span class="story-index">01</span><span class="story-word">REBUILD</span><div class="story-line"></div></div><div class="story-copy"><p class="eyebrow">PERSONAL INJURY</p><h3 id="personal-injury-title">Life changed.<br>Start with what matters.</h3><p>An unexpected injury can leave you with more questions than answers. A first conversation should help you organize them.</p><ul><li>A clear starting point</li><li>Space to explain your priorities</li><li>A conversation at your pace</li></ul><p class="scenario-note"><strong>Demonstration scenario</strong><br>Imagine a fictional visitor whose daily routine changed after a minor collision.</p><button class="text-button" data-open-riley data-riley-scenario="Personal Injury">Explore an injury conversation →</button></div></div></section><section class="practice-story defense" id="criminal-defense" data-riley-context="Fake Law Firm / Criminal Defense" aria-labelledby="criminal-defense-title"><div class="container story-grid"><div class="story-visual" aria-hidden="true"><span class="story-index">02</span><span class="story-word">RESPOND</span><div class="story-line"></div></div><div class="story-copy"><p class="eyebrow">CRIMINAL DEFENSE</p><h3 id="criminal-defense-title">A difficult moment.<br>A calm first conversation.</h3><p>When the situation feels overwhelming, an approachable first point of contact makes a difference.</p><ul><li>Respectful communication</li><li>No assumptions about your situation</li><li>Clear boundaries around legal advice</li></ul><p class="scenario-note"><strong>Demonstration scenario</strong><br>Imagine a fictional visitor asking how to schedule an initial defense consultation.</p><button class="text-button" data-open-riley data-riley-scenario="Criminal Defense">Explore a defense conversation →</button></div></div></section><section class="practice-story family" id="family-law" data-riley-context="Fake Law Firm / Family Law" aria-labelledby="family-law-title"><div class="container story-grid"><div class="story-visual" aria-hidden="true"><span class="story-index">03</span><span class="story-word">REIMAGINE</span><div class="story-line"></div></div><div class="story-copy"><p class="eyebrow">FAMILY LAW</p><h3 id="family-law-title">New chapters deserve<br>a thoughtful beginning.</h3><p>Family transitions are personal. The experience starts with listening, patience, and room for your questions.</p><ul><li>People before paperwork</li><li>Thoughtful, neutral questions</li><li>An understanding of your priorities</li></ul><p class="scenario-note"><strong>Demonstration scenario</strong><br>Imagine a fictional visitor exploring an introductory conversation about a family transition.</p><button class="text-button" data-open-riley data-riley-scenario="Family Law">Explore a family conversation →</button></div></div></section><section class="practice-story business" id="business-law" data-riley-context="Fake Law Firm / Business / Commercial Law" aria-labelledby="business-law-title"><div class="container story-grid"><div class="story-visual" aria-hidden="true"><span class="story-index">04</span><span class="story-word">MOVE FORWARD</span><div class="story-line"></div></div><div class="story-copy"><p class="eyebrow">BUSINESS / COMMERCIAL LAW</p><h3 id="business-law-title">Focus on the business.<br>Make room for the questions.</h3><p>A new venture. A changing agreement. An unexpected dispute. Explore how a focused conversation can organize the starting point.</p><ul><li>Clear communication</li><li>A practical starting point</li><li>Human judgment, supported by modern tools</li></ul><p class="scenario-note"><strong>Demonstration scenario</strong><br>Imagine a fictional business owner asking about an interrupted supplier agreement.</p><button class="text-button" data-open-riley data-riley-scenario="Business / Commercial Law">Explore a business conversation →</button></div></div></section></div>
+<section class="approach section" id="approach" data-riley-context="Fake Law Firm / Our approach" aria-labelledby="approach-title"><div class="container approach-grid">
+<div><p class="eyebrow">02 / OUR APPROACH</p><h2 id="approach-title">Less uncertainty.<br><em>More understanding.</em></h2><p class="approach-intro">The best place to begin is with a conversation. This sample journey shows what that could look like.</p><span class="outline-seal" aria-hidden="true">LISTEN<br>UNDERSTAND<br>CLARIFY</span></div>
+<ol class="steps"><li><span>01</span><div><h3>Start with what matters.</h3><p>Choose a general area of interest. Use fictional details as you explore the experience.</p></div></li><li><span>02</span><div><h3>Make room for questions.</h3><p>Meet Riley and try a sample first conversation. Riley is an AI guide, never a substitute for an attorney.</p></div></li><li><span>03</span><div><h3>See the next step.</h3><p>Preview a consultation scheduling request. No legal consultation takes place here, and nothing is booked, submitted, or sent to a legal team.</p></div></li></ol>
+</div></section>
+<section class="section" id="attorneys" data-riley-context="Fake Law Firm / Attorneys" aria-labelledby="attorneys-title"><div class="container">
+<div class="section-heading"><div><p class="eyebrow">03 / OUR PEOPLE</p><h2 id="attorneys-title">A human perspective.<br>An entirely fictional team.</h2></div><p>Meet the characters behind the experience. All names, roles, and biographies below are invented for this demonstration.</p></div>
+<div class="team-grid">
+<article class="team-card"><div class="profile-art robert"><img src="images/robert-fake.png" alt="AI-generated portrait of fictional attorney Robert Fake" width="1024" height="1536" loading="lazy" decoding="async"><small>AI-GENERATED · FICTIONAL ATTORNEY</small></div><p class="eyebrow">PERSONAL INJURY · CRIMINAL DEFENSE</p><h3>Attorney Robert Fake</h3><p>Robert's fictional practice centers on helping people feel heard when life takes an unexpected turn. His approach starts with listening and plain language.</p><span class="fiction-label">Fictional attorney</span></article>
+<article class="team-card"><div class="profile-art meredith"><img src="images/meredith-not-real.png" alt="AI-generated portrait of fictional attorney Meredith Not-Real" width="1024" height="1536" loading="lazy" decoding="async"><small>AI-GENERATED · FICTIONAL ATTORNEY</small></div><p class="eyebrow">FAMILY LAW</p><h3>Attorney Meredith Not-Real</h3><p>Meredith's fictional role brings patience and perspective to family transitions, with an emphasis on thoughtful questions and respectful conversations.</p><span class="fiction-label">Fictional attorney</span></article>
+<article class="team-card"><div class="profile-art daniel"><img src="images/daniel-fake.png" alt="AI-generated portrait of fictional attorney Daniel Fake" width="1024" height="1536" loading="lazy" decoding="async"><small>AI-GENERATED · FICTIONAL ATTORNEY</small></div><p class="eyebrow">BUSINESS / COMMERCIAL LAW</p><h3>Attorney Daniel Fake</h3><p>Daniel's fictional practice focuses on the people behind businesses. He values clear communication, practical questions, and an organized starting point.</p><span class="fiction-label">Fictional attorney</span></article>
+</div></div></section>
+<section data-riley-context="Fake Law Firm / Riley demonstration" class="riley-section" aria-labelledby="riley-title"><div class="container riley-grid"><div class="riley-visual" aria-hidden="true"><div class="riley-orb">R</div><span>MEET YOUR FIRST POINT OF CONTACT</span></div><div><p class="eyebrow">A CONVERSATION, AT YOUR PACE</p><h2 id="riley-title">A little clarity.<br>With Riley.</h2><p>Explore the experience with our AI assistant. Keep browsing while you talk, or minimize the panel and return to the same conversation.</p><button class="button" id="riley-dock-open">Talk with Riley here ↗</button><div id="riley-dock" aria-label="In-page Riley conversation"></div><p class="riley-note">Voice uses a third-party AI service. Audio, messages, and the name of the section you view are transmitted to that service during a call; use fictional information only. Typed messages are supported during a live voice session.</p></div></div></section>
+<section class="section" id="questions" data-riley-context="Fake Law Firm / Questions" aria-labelledby="questions-title"><div class="container faq-grid"><div><p class="eyebrow">04 / COMMON QUESTIONS</p><h2 id="questions-title">Good questions.<br>Clear answers.</h2><p>Everything you need to know<br>before exploring the demo.</p></div><div class="faq-list">
+<details><summary>Is Fake Law Firm a real law firm?</summary><p>No. This is a fictional website built to demonstrate a law firm experience with an AI assistant. No attorneys, legal services, case results, or real appointments are offered here.</p></details>
+<details><summary>Can I get legal advice from Riley?</summary><p>No. Riley is an AI demonstration guide, not an attorney. Interacting with Riley or this website does not create an attorney-client relationship. For a real matter, contact a qualified attorney directly.</p></details>
+<details><summary>What happens when I try the contact form?</summary><p>The form opens a demonstration notice and clears the sample entries. It does not collect, save, or transmit your information, and it does not book a consultation.</p></details>
+<details><summary>Is my Riley conversation private?</summary><p>Riley connects to a third-party voice AI service, which processes audio and messages. We cannot promise confidentiality or zero retention by that provider. Do not share personal, confidential, privileged, or sensitive details.</p></details>
+<details><summary>Can I keep browsing while I talk?</summary><p>Yes. Section links scroll within this page. Minimizing Riley keeps the current call and transcript available. Use End call to stop the microphone session. Reloading or leaving the page ends the page session.</p></details>
+</div></div></section>
+<section class="section contact-section" id="fake-contact" data-riley-context="Fake Law Firm / Demo form" aria-labelledby="contact-title"><div class="container contact-grid"><div><p class="eyebrow">05 / TAKE THE FIRST STEP</p><h2 id="contact-title">Every next chapter<br>starts somewhere.</h2><p>Preview scheduling a legal consultation.<br>This fictional demo does not provide consultations or book appointments.</p><div class="contact-note"><span aria-hidden="true">↗</span><p><strong>Just exploring?</strong><br>Leave the sample details as they are, select a practice area, and preview the confirmation.</p></div><p class="fine-print">Location-neutral demonstration.<br>No office, phone line, or legal intake service.</p></div>
+<form id="demo-form" autocomplete="off" aria-describedby="form-notice" action="#fake-contact" method="dialog"><h3>Schedule a legal consultation</h3><p id="form-notice">Use fictional details only. This form does not collect, save, or transmit information.</p>
+<label for="demo-name">Sample name <span>(optional)</span></label><input id="demo-name" type="text" value="Alex Example" maxlength="80" autocomplete="off">
+<label for="demo-email">Sample email <span>(optional)</span></label><input id="demo-email" type="email" value="alex@example.com" maxlength="120" autocomplete="off">
+<label for="demo-practice">Practice area</label><select id="demo-practice"><option>Personal Injury</option><option>Criminal Defense</option><option>Family Law</option><option>Business / Commercial Law</option></select>
+<label for="demo-message">Sample message <span>(optional)</span></label><textarea id="demo-message" rows="3" maxlength="500">I'd like to schedule a legal consultation. This is a fictional demonstration request.</textarea>
+<button class="button" id="demo-submit" type="submit" disabled>Schedule a legal consultation ↗</button><noscript><p>This demo needs JavaScript to show the confirmation. The form is disabled and cannot send information.</p></noscript><p class="fine-print">Demonstration only. No appointment will be scheduled.</p></form>
+</div></section>
+<section class="sales-return container"><p class="eyebrow">FOR ATTORNEYS &amp; FIRM OWNERS</p><h2>Bring this experience<br>to your own firm.</h2><p>Explore the Legal AI offer above, or ask Riley how this could work in your practice. Same assistant. Same conversation.</p><div class="actions"><a class="button" href="#pricing">See Legal AI pricing ↑</a><button class="text-button" data-open-riley>Talk to Riley about your firm →</button></div></section><aside class="disclosure container" id="demo-notice" aria-labelledby="notice-title"><p class="eyebrow">TRANSPARENCY, BY DESIGN</p><h2 id="notice-title">A fictional firm. A demonstration experience.</h2><p>Fake Law Firm and its attorneys are fictional. This site provides no legal services or legal advice and creates no attorney-client relationship. The demo contact form does not collect, save, or transmit information. Riley's live AI service processes conversations externally; share only fictional details. No real intake, conflict checks, referrals, bookings, or follow-up actions take place.</p></aside>
+</section>
+<footer><div class="container footer-top"><a class="brand" href="#fake-law-demo"><span class="brand-mark" aria-hidden="true">F/L</span><span>FAKE LAW FIRM<small>A FICTIONAL PRACTICE</small></span></a><a href="#fake-law-demo">Back to top ↑</a></div><div class="container footer-bottom"><span>© <span id="fake-year">2026</span> Fake Law Firm · Demonstration only</span><span>Thoughtfully fictional. Clearly disclosed.</span></div></footer>
+<div id="aiw-launcher"><button id="aiw-teaser" type="button" aria-controls="aiw-window">Meet Riley · AI assistant</button><button id="aiw-fab" aria-label="Open Riley" aria-controls="aiw-window" aria-expanded="false"><svg class="ico-chat" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg><svg class="ico-close" width="24" height="24" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 12h12"/></svg></button></div>
+<section id="aiw-window" role="region" aria-label="Riley AI conversation" inert><div class="aiw-header"><div class="aiw-avatar" aria-hidden="true">R</div><div class="aiw-header-text"><div class="aiw-name">Riley</div><div class="aiw-status" role="status">AI assistant · Ready to connect</div></div><button id="aiw-minimize" aria-label="Minimize Riley">−</button></div>
+<p class="widget-disclosure">AI sales and fictional firm demo. No legal advice. Live voice, text, and section context go to an external AI service. Use made-up details.</p>
+<div id="aiw-chat"><div id="aiw-messages" role="log" aria-live="polite" aria-label="Conversation transcript"><div class="aiw-msg bot"><div class="aiw-bubble">Welcome. I’m Riley, your Legal AI sales and fictional firm demo guide. Start a voice session to explore either experience; typed messages work during a live call.</div></div></div><div id="aiw-quick-replies"></div><div id="aiw-voice-overlay" role="status" aria-live="polite"><div class="voice-orb" aria-hidden="true"></div><div class="voice-label">Listening...</div><button class="voice-dismiss" type="button">End call</button></div><div class="aiw-input-bar"><textarea id="aiw-input" rows="1" aria-label="Message Riley during a live call" placeholder="Type during a live call"></textarea><button class="aiw-btn" id="aiw-send" aria-label="Send message">↑</button></div><div class="voice-controls"><button id="aiw-voice-btn" type="button">Start voice call</button><button id="aiw-end-call" type="button" disabled>End call</button></div></div></section>
+<dialog id="demo-dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description"><span class="eyebrow">DEMONSTRATION ONLY</span><h2 id="dialog-title">You're exploring a fictional firm.</h2><p id="dialog-description">This is a fake site for demonstration. We do not intake, collect, save, or transmit information entered in this form.</p><p>Your sample entries have been cleared. No consultation was requested or scheduled.</p><p class="fine-print">Riley is separate: live AI conversations are processed by an external service. Use fictional details only.</p><button class="button" id="dialog-close" autofocus>Got it — keep exploring</button></dialog>
 
-    <button id="aiw-fab" aria-label="Open AI chat" aria-expanded="false">
-      <svg class="ico-chat" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0c0d0f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-      </svg>
-      <svg class="ico-close" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0c0d0f" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
-        <line x1="18" y1="6" x2="6" y2="18"/>
-        <line x1="6" y1="6" x2="18" y2="18"/>
-      </svg>
-    </button>
-
-  </div>
-
-  <div id="aiw-window" role="dialog" aria-label="Chat with Riley AI" aria-modal="true">
-
-    <div class="aiw-header">
-      <div class="aiw-avatar" aria-hidden="true">⚖</div>
-      <div class="aiw-header-text">
-        <div class="aiw-name">Riley — Legal AI Sales &amp; Live Demo Guide</div>
-        <div class="aiw-status">
-          <span class="aiw-status-dot" aria-hidden="true"></span>
-          Online now · Instant replies
-        </div>
-      </div>
-    </div>
-
-    <div id="aiw-chat" style="display:flex;flex-direction:column;flex:1;overflow:hidden;position:relative;">
-
-      <div id="aiw-messages" role="log" aria-live="polite" aria-label="Chat messages"></div>
-      <div id="aiw-quick-replies" aria-label="Quick reply suggestions"></div>
-
-      <div id="aiw-voice-overlay" role="status" aria-live="assertive">
-        <div class="voice-orb" aria-hidden="true"></div>
-        <div class="voice-label">Listening...</div>
-        <div class="voice-sublabel">Speak your question</div>
-        <button class="voice-dismiss" onclick="aiwDismissVoice()">Cancel</button>
-      </div>
-
-      <div class="aiw-input-bar">
-        <textarea id="aiw-input" placeholder="Type or speak..." rows="1" aria-label="Message input"></textarea>
-        <button class="aiw-btn" id="aiw-voice-btn" aria-label="Voice input" title="Voice input">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
-            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-            <line x1="12" y1="19" x2="12" y2="23"/>
-            <line x1="8" y1="23" x2="16" y2="23"/>
-          </svg>
-        </button>
-        <button class="aiw-btn" id="aiw-send" aria-label="Send message" title="Send">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="22" y1="2" x2="11" y2="13"/>
-            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
-          </svg>
-        </button>
-      </div>
-    </div>
-
-  </div>
-  <!-- /widget -->
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    (function () {
-      const callsInput = document.getElementById('callsPerDay');
-      const callType = document.getElementById('callType');
-      const operators = document.getElementById('operatorCount');
-      const missedCalls = document.getElementById('missedCalls');
-      const customerValue = document.getElementById('customerValue');
-      const minutesOutput = document.getElementById('estimatedMinutes');
-      const planOutput = document.getElementById('recommendedPlan');
-      const reasonOutput = document.getElementById('recommendationReason');
-      const opportunityOutput = document.getElementById('opportunityValue');
-
-      document.getElementById('planCalculator').addEventListener('submit', function (event) { event.preventDefault(); });
-
-      function positiveNumber(input) {
-        const value = Number(input.value);
-        return Number.isFinite(value) ? Math.max(0, value) : 0;
-      }
-
-      function updatePlan() {
-        const calls = positiveNumber(callsInput);
-        const duration = positiveNumber(callType);
-        const operatorCount = positiveNumber(operators);
-        const monthlyMinutes = Math.round(calls * duration * 30.4);
-        let plan = 'Small Business — $300/month';
-        let thresholdReason = 'lighter estimated call workload';
-
-        if (monthlyMinutes > 900 || operatorCount >= 3) {
-          plan = 'Business — $500/month';
-          thresholdReason = 'growing estimated call workload or added office complexity';
-        }
-        if (monthlyMinutes > 2400 || operatorCount >= 4) {
-          plan = 'Busy Business — $1,000/month';
-          thresholdReason = 'heavy estimated call workload or multiple office-system operators';
-        }
-        if (monthlyMinutes > 5000) {
-          plan = 'High-Volume Business — $1,500/month';
-          thresholdReason = 'high estimated AI workload';
-        }
-        if (monthlyMinutes > 8500) {
-          plan = 'Enterprise — custom pricing';
-          thresholdReason = 'workload beyond the standard plan range';
-        }
-
-        minutesOutput.textContent = monthlyMinutes.toLocaleString() + ' minutes';
-        planOutput.textContent = plan;
-        reasonOutput.textContent = 'Recommended for ' + thresholdReason + '. Employee headcount does not determine the plan.';
-      }
-
-      function updateOpportunity() {
-        const missed = positiveNumber(missedCalls);
-        const value = positiveNumber(customerValue);
-        opportunityOutput.textContent = (missed * value).toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }) + '/month';
-      }
-
-      [callsInput, callType, operators].forEach(function (field) { field.addEventListener('input', updatePlan); });
-      [missedCalls, customerValue].forEach(function (field) { field.addEventListener('input', updateOpportunity); });
-      updatePlan();
-      updateOpportunity();
-    }());
-  </script>
-  <script src="js/time-calculator.js?v=20260901-1"></script>
-  <script src="js/riley-bot.js?v=20260901-2"></script>
-
+</div>
+</main>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="js/time-calculator.js?v=20260906"></script>
+<script src="js/riley-bot.js?v=20260906"></script>
+<script src="js/fake-law.js?v=20260906"></script>
 </body>
 </html>
