@@ -1080,3 +1080,14 @@ body::before {
   .time-calculator-shell { grid-template-columns: minmax(0, 1.4fr) minmax(320px, 0.8fr); align-items: start; }
   .plan-calculator { grid-template-columns: minmax(0, 1fr) minmax(320px, 0.9fr); }
 }
+
+
+/* Riley hero call button */
+#legal-sales .agent-call-button{display:flex;align-items:center;gap:22px;width:100%;padding:25px 32px;min-height:112px;margin:0 0 10px;background:#72ff13;color:#0c0d0f;border:3px solid #bcff83;border-radius:12px;box-shadow:0 0 36px #72ff1355;font-family:var(--font-display);font-size:clamp(2rem,4vw,3.5rem);font-weight:900;line-height:1.05;text-align:left;cursor:pointer}
+#legal-sales .agent-call-button small{display:block;font-family:var(--font-body);font-size:14px;font-weight:600;line-height:1.5;margin-top:8px}
+#legal-sales .agent-call-button svg{flex-shrink:0}
+#legal-sales .agent-call-arrow{margin-left:auto;font-size:1.15em}
+#legal-sales .agent-call-button:hover{background:#95ff4b;box-shadow:0 0 48px #72ff1377}
+#legal-sales .agent-call-button:focus-visible{outline:3px solid white;outline-offset:5px}
+#legal-sales .agent-call-note{font-size:12px;color:#c6d0bf;margin-bottom:28px}
+@media(max-width:620px){#legal-sales .agent-call-button{padding:20px 16px;gap:12px;min-height:104px;font-size:clamp(1.65rem,7.5vw,2.3rem)}#legal-sales .agent-call-button svg{width:28px;height:28px}#legal-sales .agent-call-button small{font-size:11px}#legal-sales .agent-call-note{font-size:11px;margin-bottom:22px}#legal-sales .agent-call-arrow{font-size:1em}}
